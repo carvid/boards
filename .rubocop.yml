@@ -1,0 +1,28 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - bin/**/*
+    - config/**/*
+    - db/schema.rb
+    - node_modules/**/*
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb
+Style/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+Style/TrailingBlankLines:
+  EnforcedStyle: final_blank_line
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+Metrics/BlockLength:
+  Enabled: false
+Metrics/LineLength:
+  Max: 80
+  AllowHeredoc: true
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
