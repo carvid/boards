@@ -4,6 +4,8 @@ require 'rails_helper'
 require 'requests/schemas'
 
 describe 'Boards endpoints', type: :request do
+  include_context 'response schemas'
+  
   let(:board) { create(:board) }
   let(:board_id) { board.id }
 
@@ -14,7 +16,7 @@ describe 'Boards endpoints', type: :request do
 
     it 'returns and array of boards' do
       expect(json.size).to eq(10)
-      json.each { |board| expect(board).to eq(schema) }
+      json.each { |board| expect(board).to eq(board_schema) }
     end
 
     it 'returns status code 200' do
