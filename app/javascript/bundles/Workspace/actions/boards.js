@@ -2,7 +2,8 @@ import api from '../lib/api';
 import {
   FETCH_BOARD,
   FETCH_BOARDS,
-  BOARD_SELECT
+  BOARD_SELECT,
+  SET_CURRENT_BOARD,
 } from '../constants';
 
 export const createBoard = (title) => {
@@ -19,6 +20,6 @@ export const fetchBoards = () => {
   }
 };
 
-export const onBoardSelect = () => ({
-  type: BOARD_SELECT,
+export const setCurrentBoard = (board) => ({
+  type: SET_CURRENT_BOARD, payload: { board }
 });

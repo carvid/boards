@@ -12,7 +12,7 @@ class BoardSelector extends Component {
   }
 
   onBoardSelect(board) {
-    return this.props.onChange(board.id);
+    return this.props.onChange(board);
   }
 
   onCreate() {

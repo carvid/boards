@@ -42,7 +42,8 @@ const boardsById = (state = {}, action) => {
 const currentBoard = (state = null, action) => {
   switch (action.type) {
     case SET_CURRENT_BOARD:
-      return action.payload;
+      const { payload: { board } } = action;
+      return board.id;
     default:
       return state;
   }
