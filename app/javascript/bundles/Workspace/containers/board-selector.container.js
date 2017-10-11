@@ -12,7 +12,6 @@ import {
 class BoardSelectorContainer extends Component {
   constructor(props) {
     super(props);
-    this.onBoardSelect = this.onBoardSelect.bind(this);
     this.onCreateBoard = this.onCreateBoard.bind(this);
     this.setCurrentBoard = this.setCurrentBoard.bind(this);
   }
@@ -56,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       fetchBoards,
-      createBoard
+      createBoard,
       setCurrentBoard,
     }, dispatch),
   };
