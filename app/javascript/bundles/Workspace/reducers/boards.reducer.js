@@ -7,7 +7,17 @@ import {
 import {
   SET_CURRENT_BOARD,
   FETCH_BOARDS,
+  FETCH_BOARD,
 } from '../constants';
+
+const addBoard = (state, action) => {
+  const { payload } = action;
+  const { entities: { boards } } = normalizeBoard(payload);
+  return {
+    ...state,
+    ...boards,
+  };
+}
 
 const addBoards = (state, action) => {
   const { payload } = action;
@@ -22,6 +32,8 @@ const boardsById = (state = {}, action) => {
   switch (action.type) {
     case FETCH_BOARDS:
       return addBoards(state, action);
+    case FETCH_BOARD:
+      return addBoard(state, action);
     default:
       return state;
   }

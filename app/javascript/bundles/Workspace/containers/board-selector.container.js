@@ -3,12 +3,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduce } from 'lodash';
 import BoardSelector from '../components/board-selector';
-import { onBoardSelect, fetchBoards } from '../actions';
+import { onBoardSelect, fetchBoards, createBoard } from '../actions';
 
 class BoardSelectorContainer extends Component {
   constructor(props) {
     super(props);
     this.onBoardSelect = this.onBoardSelect.bind(this);
+    this.onCreateBoard = this.onCreateBoard.bind(this);
   }
 
   componentWillMount() {
@@ -19,11 +20,16 @@ class BoardSelectorContainer extends Component {
     return this.props.actions.onBoardSelect(id);
   }
 
+  onCreateBoard(name) {
+    return this.props.actions.createBoard(name);
+  }
+
   render() {
     return (
       <BoardSelector
         boards={this.props.boards}
         onChange={this.onBoardSelect}
+        onCreate={this.onCreateBoard}
       />
     )
   }
@@ -46,6 +52,7 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators({
       fetchBoards,
       onBoardSelect,
+      createBoard
     }, dispatch),
   };
 };
