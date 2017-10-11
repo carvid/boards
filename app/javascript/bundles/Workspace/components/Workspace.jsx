@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default class HelloWorld extends React.Component {
+export default class Workspace extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired, // this is passed from the Rails view
   };
@@ -19,6 +19,7 @@ export default class HelloWorld extends React.Component {
 
   updateName = (name) => {
     this.setState({ name });
+    this.props.updateName(name);
   };
 
   render() {
