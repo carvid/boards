@@ -3,27 +3,27 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduce } from 'lodash';
 import BoardSelector from '../components/board-selector';
-import { onBoardSelect, fetchBoards } from '../actions';
+import { setCurrentBoard, fetchBoards } from '../actions';
 
 class BoardSelectorContainer extends Component {
   constructor(props) {
     super(props);
-    this.onBoardSelect = this.onBoardSelect.bind(this);
+    this.setCurrentBoard = this.setCurrentBoard.bind(this);
   }
 
   componentWillMount() {
     return this.props.actions.fetchBoards();
   }
 
-  onBoardSelect(id) {
-    return this.props.actions.onBoardSelect(id);
+  setCurrentBoard(board) {
+    return this.props.actions.setCurrentBoard(board);
   }
 
   render() {
     return (
       <BoardSelector
         boards={this.props.boards}
-        onChange={this.onBoardSelect}
+        onChange={this.setCurrentBoard}
       />
     )
   }
@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       fetchBoards,
-      onBoardSelect,
+      setCurrentBoard,
     }, dispatch),
   };
 };
