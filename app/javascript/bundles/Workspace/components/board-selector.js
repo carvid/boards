@@ -17,9 +17,9 @@ class BoardSelector extends Component {
 
   renderBoard(board) {
     return (
-      <div className="board-button col-2" key={`board-${board.id}`}>
+      <div className="board-button col-1" key={`board-${board.id}`}>
         <button
-          className="btn btn-default btn-xs"
+          className="btn btn-primary btn-sm"
           onClick={() => this.onBoardSelect(board)}
         >
         {board.title}
