@@ -4,6 +4,8 @@ require 'rails_helper'
 require 'requests/schemas'
 
 describe 'Columns endpoints', type: :request do
+  include_context 'response schemas'
+
   let(:column) { create(:column) }
   let(:column_id) { column.id }
 
@@ -25,7 +27,7 @@ describe 'Columns endpoints', type: :request do
         let(:request_body) { { title: 'Task 1', position: 1 } }
 
         it 'creates a task' do
-          expect(json).to eq(task_schema)
+          expect(json).to match(task_schema)
         end
 
         it 'returns status code 201' do
