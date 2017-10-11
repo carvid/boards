@@ -1,24 +1,36 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisites
 
-Things you may want to cover:
+* Ruby 2.4.2
+* Yarn
+* Foreman
 
-* Ruby version
+## Up and Running
 
-* System dependencies
+First, install the project dependencies
 
-* Configuration
+```
+$ bundle && yarn
+```
 
-* Database creation
+Then, create the database and populate the initial data
 
-* Database initialization
+```
+$ rake db:setup
+```
 
-* How to run the test suite
+Finally, run the server and visit http://localhost:3000
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ foreman start -f Procfile.dev
+```
 
-* Deployment instructions
+## Tests
 
-* ...
+You can run all the tests with:
+
+```
+$ rake spec
+```
+

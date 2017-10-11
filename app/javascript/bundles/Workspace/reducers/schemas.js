@@ -1,12 +1,17 @@
 import { schema, normalize } from 'normalizr';
 
-const Board = new schema.Entity('boards');
-// const ConsumerFieldValue = new schema.Entity('consumerFieldValues');
-// const Purchase = new schema.Entity('purchases', {
-//   memberships: [Membership],
-//   consumerFieldValues: [ConsumerFieldValue],
-// });
+const Task = new schema.Entity('tasks');
+
+const Column = new schema.Entity('columns', {
+  tasks: [Task],
+});
+
+const Board = new schema.Entity('boards', {
+  columns: [Column],
+});
 
 export const normalizeBoard = data => normalize(data, Board);
 
 export const normalizeBoards = data => normalize(data, [Board]);
+
+export const normalizeColumn = data => normalize(data, Column);

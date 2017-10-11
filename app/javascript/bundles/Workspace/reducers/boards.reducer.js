@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import {
   normalizeBoard,
   normalizeBoards,
+  normalizeColumn,
 } from './schemas';
 
 import {
@@ -28,12 +29,26 @@ const addBoards = (state, action) => {
   };
 };
 
+const attachColumnToBoard = (state, action) => {
+  return state;
+
+  const { payload } = action;
+  const { entities: { columns } } = normalizeColumn(payload);
+  const board = state[payload.boardId];
+
+  return {
+    ...state,
+  }
+};
+
 const boardsById = (state = {}, action) => {
   switch (action.type) {
     case FETCH_BOARDS:
       return addBoards(state, action);
     case FETCH_BOARD:
       return addBoard(state, action);
+    case FETCH_COLUMN:
+      return attachColumnToBoard(state, action)
     default:
       return state;
   }
