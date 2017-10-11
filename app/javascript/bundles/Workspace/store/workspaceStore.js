@@ -1,9 +1,18 @@
-import { createStore } from 'redux';
-import workspaceReducer from '../reducers/workspaceReducer';
+import { createStore, applyMiddleware, compose } from 'redux';
+import reduxThunk from 'redux-thunk';
+import reducers from '../reducers';
 
-const configureStore = (railsProps) => (
-  createStore(workspaceReducer, railsProps,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      actionsBlacklist: [
+      ],
+    }) : compose;
+const enhancer = composeEnhancers(
+  applyMiddleware(reduxThunk),
 );
 
-export default configureStore;
+export default function configureStore(initialState) {
+  return createStore(reducers, initialState, enhancer);
+}

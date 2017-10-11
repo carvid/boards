@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import BoardSelector from '../components/board-selector';
-import { onBoardSelect } from '../actions/workspaceActionCreators.js';
+import { onBoardSelect } from '../actions';
 
 const mapStateToProps = (state) => {
   return {

@@ -4,7 +4,7 @@ class WorkspaceController < ApplicationController
   layout 'workspace'
 
   def index
-    @workspace_props = { name: 'Stranger' }
+    @workspace_props = { }
   end
 end
 
