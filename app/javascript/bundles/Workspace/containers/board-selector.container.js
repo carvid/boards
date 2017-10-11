@@ -31,7 +31,7 @@ class BoardSelectorContainer extends Component {
 
 const mapStateToProps = (state) => {
   const boards = reduce(state.boards.byId, (result, board) => {
-    // TODO: Return the array with boards
+    result.push(board);
     return result;
   }, []);
 

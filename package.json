@@ -5,6 +5,7 @@
     "@rails/webpacker": "^3.0.2",
     "axios": "^0.16.2",
     "babel-preset-react": "^6.24.1",
+    "camelobj": "^0.0.7",
     "coffeescript": "1.12.7",
     "lodash": "^4.17.4",
     "normalizr": "^3.2.4",

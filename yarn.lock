@@ -1095,6 +1095,13 @@ camelcase@^4.0.0, camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
+camelobj@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/camelobj/-/camelobj-0.0.7.tgz#a90e8819c59cad68ac5dcd234244e8c278cb981e"
+  dependencies:
+    camelcase "^3.0.0"
+    is-plain-object "^2.0.1"
+
 caniuse-api@^1.5.2:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/caniuse-api/-/caniuse-api-1.6.1.tgz#b534e7c734c4f81ec5fbe8aca2ad24354b962c6c"
