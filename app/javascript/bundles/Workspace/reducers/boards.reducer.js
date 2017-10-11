@@ -11,7 +11,7 @@ import {
 
 const addBoards = (state, action) => {
   const { payload } = action;
-  const boards = normalizeBoards(payload);
+  const boards = normalizeBoards(payload).result;
   return {
     ...state,
     ...boards,

@@ -7,7 +7,7 @@ class BoardSelector extends Component {
   }
 
   onBoardSelect(board) {
-    return this.props.actions.onBoardSelect(board);
+    return this.props.onChange(board.id);
   }
 
   renderBoards() {
@@ -42,9 +42,6 @@ class BoardSelector extends Component {
 
 BoardSelector.defaultProps = {
   boards: [],
-  actions: {
-    onBoardSelect: () => {},
-  }
 }
 
 export default BoardSelector;
