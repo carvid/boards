@@ -36,6 +36,8 @@ gem 'active_model_serializers'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'react_on_rails', '~> 9.0.1'
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.0.0.beta'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
