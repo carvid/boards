@@ -5,7 +5,7 @@ shared_context 'response schemas' do
     {
       id: an_instance_of(Integer),
       title: an_instance_of(String),
-      columns: array_including(column_schema),
+      columns: be_empty.or(array_including(column_schema)),
     }
   end
 
@@ -14,7 +14,7 @@ shared_context 'response schemas' do
       id: an_instance_of(Integer),
       title: an_instance_of(String),
       position: an_instance_of(Integer),
-      tasks: array_including(task_schema),
+      tasks: be_empty.or(array_including(task_schema)),
     }
   end
 

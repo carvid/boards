@@ -5,7 +5,7 @@ require 'requests/schemas'
 
 describe 'Boards endpoints', type: :request do
   include_context 'response schemas'
-  
+
   let(:board) { create(:board) }
   let(:board_id) { board.id }
 
@@ -16,7 +16,7 @@ describe 'Boards endpoints', type: :request do
 
     it 'returns and array of boards' do
       expect(json.size).to eq(10)
-      json.each { |board| expect(board).to eq(board_schema) }
+      json.each { |board| expect(board).to match(schema) }
     end
 
     it 'returns status code 200' do
@@ -29,7 +29,7 @@ describe 'Boards endpoints', type: :request do
 
     context 'when the record exists' do
       it 'returns the board' do
-        expect(json).to eq(board_schema)
+        expect(json).to match(board_schema)
       end
 
       it 'returns status code 200' do
@@ -53,7 +53,7 @@ describe 'Boards endpoints', type: :request do
       let(:request_body) { { title: 'Board 1' } }
 
       it 'creates a board' do
-        expect(json).to eq(board_schema)
+        expect(json).to match(board_schema)
       end
 
       it 'returns status code 201' do
@@ -88,7 +88,7 @@ describe 'Boards endpoints', type: :request do
         let(:request_body) { { title: 'Column 1', position: 1 } }
 
         it 'creates a columns' do
-          expect(json).to eq(column_schema)
+          expect(json).to match(column_schema)
         end
 
         it 'returns status code 201' do

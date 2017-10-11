@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ColumnsController < ApiController
-
   before_action :find_board
 
   def create
