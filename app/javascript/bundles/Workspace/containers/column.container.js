@@ -35,13 +35,15 @@ class ColumnContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const boards = reduce(state.boards.byId, (result, board) => {
-    result.push(board);
+  const column = state.columns.byId[this.props.id];
+  const tasks = reduce(state.tasks.byId, (result, task) => {
+    if(task.column_id === column.id)
+      result.push(task);
     return result;
   }, []);
 
   return {
-    boards,
+    tasks,
   }
 };
 
