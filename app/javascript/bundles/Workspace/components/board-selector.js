@@ -33,7 +33,7 @@ class BoardSelector extends Component {
 
   renderBoard(board) {
     return (
-      <div className="board-button col-1" key={`board-${board.id}`}>
+      <div className="board-button col" key={`board-${board.id}`}>
         <button
           className="btn btn-primary btn-sm"
           onClick={() => this.onBoardSelect(board)}
@@ -72,7 +72,7 @@ class BoardSelector extends Component {
 
         { this.renderForm() }
 
-        <div className="row">
+        <div className="my-2 row">
           { this.renderBoards() }
         </div>
       </div>

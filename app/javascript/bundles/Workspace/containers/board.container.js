@@ -4,10 +4,10 @@ import Board from '../components/board';
 
 const mapStateToProps = (state) => {
   const board = state.boards.byId[state.boards.current];
-  if (!board) {
-    return { columns: [] };
-  } else {
-    return { columns: board.columns };
+  if (!board) return { title: '', columns: [] };
+
+  return {
+    ...board,
   }
 };
 
