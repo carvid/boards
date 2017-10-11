@@ -18,9 +18,14 @@ class Board extends Component {
 
   render() {
     return (
-      <div className="board">
-        <div className="row">
-          { this.renderColumns() }
+      <div className="board card">
+        <div className="card-header">
+          <h3>{this.props.title}</h3>
+        </div>
+        <div className="card-body">
+          <div className="row">
+            { this.renderColumns() }
+          </div>
         </div>
       </div>
     )
