@@ -16,7 +16,7 @@ describe 'Boards endpoints', type: :request do
 
     it 'returns and array of boards' do
       expect(json.size).to eq(10)
-      json.each { |board| expect(board).to match(schema) }
+      json.each { |board| expect(board).to match(board_schema) }
     end
 
     it 'returns status code 200' do
