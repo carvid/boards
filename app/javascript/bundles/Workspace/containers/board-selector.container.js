@@ -1,6 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import BoardSelector from '../components/board-selector';
+import { onBoardSelect } from '../actions/workspaceActionCreators.js';
 
 const mapStateToProps = (state) => {
   return {
@@ -20,7 +21,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
-      onBoardSelect: () => ({}),
+      onBoardSelect: onBoardSelect,
     }, dispatch),
   };
 };
