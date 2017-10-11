@@ -3,20 +3,12 @@ import { connect } from 'react-redux';
 import Board from '../components/board';
 
 const mapStateToProps = (state) => {
-  return {
-    columns: [
-      {
-        id: 1,
-        title: 'IT Department',
-        position: 1,
-      },
-      {
-        id: 2,
-        title: 'QA Department',
-        position: 2,
-      },
-    ],
-  };
+  const board = state.boards.byId[state.boards.current];
+  if (!board) {
+    return { columns: [] };
+  } else {
+    return { columns: board.columns };
+  }
 };
 
 export default connect(mapStateToProps)(Board);
