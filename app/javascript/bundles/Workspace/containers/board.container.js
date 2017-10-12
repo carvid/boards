@@ -30,22 +30,40 @@ class BoardContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const board = {...state.boards.byId[state.boards.current]};
+  const board = { ...state.boards.byId[state.boards.current] };
 
   if (!board) return { id: '', title: '', columns: [] };
 
+  return {
+    ...hydrateBoard(state, board),
+  }
+};
+
+const hydrateBoard = (state, board) => {
   const columns = reduce(state.columns.byId, (res, column) => {
     if (includes(board.columns, column.id)) {
-      res.push(column);
+      res.push(hydrateColumn(state, { ...column }));
     }
     return res;
   }, []);
 
   board.columns = columns;
 
-  return {
-    ...board,
-  }
+  return { ...board };
+};
+
+const hydrateColumn = (state, column) => {
+  const tasks = reduce(state.tasks.byId, (res, task) => {
+    if (includes(column.tasks, task.id)) {
+      res.push(task);
+    }
+
+    return res;
+  }, []);
+
+  column.tasks = tasks;
+
+  return { ...column };
 };
 
 

@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
 import {
-  normalizeTask,
-  normalizeTasks,
+  normalizeBoards,
 } from './schemas';
 
 import {
-  FETCH_TASKS,
+  FETCH_BOARDS,
   FETCH_TASK,
 } from '../constants';
 
@@ -16,19 +15,20 @@ const addTask = (state, action) => {
     ...state,
     ...tasks,
   };
-}
+};
+
 const addTasks = (state, action) => {
   const { payload } = action;
-  const { entities: { boards } } = normalizeTasks(payload);
+  const { entities: { tasks } } = normalizeBoards(payload);
   return {
     ...state,
     ...tasks,
   };
-}
+};
 
 const tasksById = (state = {}, action) => {
   switch (action.type) {
-    case FETCH_TASKS:
+    case FETCH_BOARDS:
       return addTasks(state, action);
     case FETCH_TASK:
       return addTask(state, action);

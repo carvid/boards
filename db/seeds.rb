@@ -26,9 +26,9 @@ end.flatten
 columns.each do |column|
   column.tasks.create(
     [
-      { title: 'Column 1', position: 1 },
-      { title: 'Column 2', position: 2 },
-      { title: 'Column 3', position: 3 },
+      { title: 'Task 1', position: 1 },
+      { title: 'Task 2', position: 2 },
+      { title: 'Task 3', position: 3 },
     ]
   )
 end

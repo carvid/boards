@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Column from './column';
 
 class Board extends Component {
   constructor(props) {
@@ -23,9 +24,9 @@ class Board extends Component {
 
   renderColumns() {
     return this.props.columns.map((column) => {
-      return(
+      return (
         <div className="col" key={column.id}>
-          <h4>{ column.title }</h4>
+          <Column {...column} />
         </div>
       )
     });

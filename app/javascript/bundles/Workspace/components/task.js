@@ -7,10 +7,11 @@ class Task extends Component {
 
   render() {
     return (
-      <div className="task" key={`task-${this.props.id}`}>
+      <div className="task card col-12 my-2" key={`task-${this.props.id}`}>
         { this.props.title }
       </div>
     )
   }
+}
 
 export default Task;
