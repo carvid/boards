@@ -9,6 +9,7 @@ import {
   SET_CURRENT_BOARD,
   FETCH_BOARDS,
   FETCH_BOARD,
+  FETCH_COLUMN,
 } from '../constants';
 
 const addBoard = (state, action) => {
