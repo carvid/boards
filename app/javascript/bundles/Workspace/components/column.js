@@ -5,7 +5,7 @@ class Column extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { name: '', id: '' };
+    this.state = { name: '' };
 
     this.renderTasks = this.renderTasks.bind(this);
     this.renderTask = this.renderTask.bind(this);
@@ -15,7 +15,7 @@ class Column extends Component {
 
   onCreate() {
     if (this.state.name.length) {
-      this.props.onCreate(this.state.name, this.state.id)
+      this.props.onCreate(this.state.name, this.props.id)
       this.setState({ name: '', id: this.props.id });
     }
   }

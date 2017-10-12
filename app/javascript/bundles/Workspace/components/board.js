@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Column from './column';
+import Column from '../containers/column.container';
 
 class Board extends Component {
   constructor(props) {

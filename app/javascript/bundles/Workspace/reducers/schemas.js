@@ -15,3 +15,5 @@ export const normalizeBoard = data => normalize(data, Board);
 export const normalizeBoards = data => normalize(data, [Board]);
 
 export const normalizeColumn = data => normalize(data, Column);
+
+export const normalizeTask = data => normalize(data, Task);

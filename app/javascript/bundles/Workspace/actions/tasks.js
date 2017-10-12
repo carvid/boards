@@ -1,13 +1,9 @@
 import api from '../lib/api';
-import { FETCH_TASKS, FETCH_TASK } from '../constants';
+import { FETCH_TASK } from '../constants';
 
-export const fetchTask = (column_id) => {
-
-};
-
-export const createTask = (title, column_id) => {
+export const createTask = (title, columnId) => {
   return (dispatch) => {
-    return api.post(`/columns/${column_id}/tasks`, { title })
-      .then(res => dispatch({ type: FETCH_TASK, payload: res.data }));
+    return api.post(`/columns/${columnId}/tasks`, { title, position: 1 })
+      .then(res => dispatch({ type: FETCH_TASK, payload: { ...res.data, columnId } }));
   };
 };

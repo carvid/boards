@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import {
   normalizeBoards,
+  normalizeTask,
 } from './schemas';
 
 import {
@@ -10,7 +11,7 @@ import {
 
 const addTask = (state, action) => {
   const { payload } = action;
-  const { entities: { boards } } = normalizeTask(payload);
+  const { entities: { tasks } } = normalizeTask(payload);
   return {
     ...state,
     ...tasks,
