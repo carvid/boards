@@ -11,8 +11,10 @@ class ApiController < ActionController::API
 
   private
 
-  def json_response(object, status = :ok)
-    render json: object, status: status
+  def json_response(object, status = :ok, query = nil)
+    options = { json: object, status: status }
+    options[:include] = query if query
+    render options
   end
 end
 

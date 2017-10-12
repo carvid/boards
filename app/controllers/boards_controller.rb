@@ -10,7 +10,7 @@ class BoardsController < ApiController
 
   def index
     @boards = Board.all
-    json_response(@boards)
+    json_response(@boards, :ok, 'columns,columns.tasks')
   end
 
   def show
