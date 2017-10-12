@@ -30,7 +30,7 @@ class BoardContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const board = state.boards.byId[state.boards.current];
+  const board = {...state.boards.byId[state.boards.current]};
 
   if (!board) return { id: '', title: '', columns: [] };
 

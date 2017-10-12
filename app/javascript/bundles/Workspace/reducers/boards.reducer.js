@@ -31,15 +31,13 @@ const addBoards = (state, action) => {
 };
 
 const attachColumnToBoard = (state, action) => {
-  return state;
-
   const { payload } = action;
-  const { entities: { columns } } = normalizeColumn(payload);
   const board = state[payload.boardId];
 
   return {
     ...state,
-  }
+    [board.id]: { ...board, columns: [ ...board.columns, payload.id ] },
+  };
 };
 
 const boardsById = (state = {}, action) => {

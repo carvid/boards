@@ -20,7 +20,7 @@ const addColumn = (state, action) => {
 const addColumns = (state, action) => {
   const { payload } = action;
   const { entities: { columns } } = normalizeBoards(payload);
-  console.log(columns, action.payload, state)
+
   return {
     ...state,
     ...columns,
