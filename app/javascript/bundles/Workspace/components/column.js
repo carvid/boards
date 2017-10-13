@@ -35,6 +35,7 @@ class Column extends Component {
   onUpdateTitle() {
     if (this.state.columnTitle.length) {
       this.setState({ editing: false });
+      this.props.onEdit(this.state.columnTitle)
     }
   }
 

@@ -9,3 +9,14 @@ export const createColumn = (boardId, title) => {
       .then(res => dispatch({ type: FETCH_COLUMN, payload: { ...res.data, boardId } }));
   };
 };
+
+export const updateColumn = (boardId, columnId, data) => {
+  if (!data.position) {
+    data.position = 1;
+  }
+
+  return (dispatch) => {
+    return api.patch(`/columns/${columnId}`, data)
+      .then(res => dispatch({ type: FETCH_COLUMN, payload: { ...res.data, boardId } }))
+  };
+};
