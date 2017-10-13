@@ -21,7 +21,8 @@ class BoardSelectorContainer extends Component {
   }
 
   setCurrentBoard(board) {
-    return this.props.actions.setCurrentBoard(board);
+    this.props.actions.setCurrentBoard(board);
+    this.props.onBoardSelect(board.id);
   }
 
   onCreateBoard(name) {
