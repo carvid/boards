@@ -12,6 +12,28 @@
  *
  */
 @import "bootstrap";
+@import "styleguide";
 
-.boards {
+html, body {
+  height:100%;
+}
+
+body {
+  background: $almost-white;
+  font-size: 13px;
+}
+
+.main-container {
+  a {
+    color: $cloudy-blue;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.menu {
+  background: $cloudy-blue;
 }

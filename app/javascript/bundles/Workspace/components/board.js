@@ -21,6 +21,8 @@ class Board extends Component {
 
   get editing() { return this.state.editing; }
 
+  get canAddMoreColumns() { return this.props.columns.length < 5 }
+
   onCreate() {
     this.props.onAddColumn(this.props.id, this.state.name);
   }
@@ -63,8 +65,14 @@ class Board extends Component {
           placeholder="column name"
           value={this.state.name}
           onChange={this.updateName}
+          disabled={!this.canAddMoreColumns}
         />
-        <button className="btn btn-default" type="button" onClick={this.onCreate}>
+        <button
+          className="btn btn-default"
+          type="button"
+          onClick={this.onCreate}
+          disabled={!this.canAddMoreColumns}
+        >
           Add Column
         </button>
       </form>
@@ -96,13 +104,15 @@ class Board extends Component {
 
   render() {
     return (
-      <div className="board card">
-        <div className="card-header">
-          { this.renderTitle() }
+      <div className="board">
+        <div className="row">
+          <div className="col-12">
+            { this.renderTitle() }
+          </div>
         </div>
-        <div className="card-body boards">
+        <div className="boards py-3">
           { this.renderForm() }
-          <div className="row">
+          <div className="row my-3">
             { this.renderColumns() }
           </div>
         </div>

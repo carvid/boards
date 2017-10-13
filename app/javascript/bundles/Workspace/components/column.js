@@ -7,13 +7,11 @@ class Column extends Component {
 
     this.state = {
       columnTitle: this.props.title,
-      taskName: '',
       editing: false,
     };
 
     this.renderTasks = this.renderTasks.bind(this);
     this.renderTask = this.renderTask.bind(this);
-    this.updateTaskName = this.updateTaskName.bind(this);
     this.updateColumnTitle = this.updateColumnTitle.bind(this);
     this.onCreate = this.onCreate.bind(this);
     this.onUpdateTitle = this.onUpdateTitle.bind(this);
@@ -28,11 +26,10 @@ class Column extends Component {
     this.setState({ editing: true });
   }
 
-  onCreate() {
-    if (this.state.taskName.length) {
-      this.props.onCreate(this.state.taskName, this.props.id)
-      this.setState({ taskName: '' });
-    }
+  onCreate(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    this.props.onCreate('double click to edit', this.props.id)
   }
 
   onUpdateTitle() {
@@ -43,10 +40,6 @@ class Column extends Component {
 
   updateColumnTitle(ev) {
     this.setState({ columnTitle: ev.target.value });
-  }
-
-  updateTaskName(ev) {
-    this.setState({ taskName: ev.target.value });
   }
 
   renderTasks() {
@@ -63,23 +56,6 @@ class Column extends Component {
         position={task.position}
       />
     );
-  }
-
-  renderForm() {
-    return (
-      <form className="form-inline" role="form">
-        <input
-          className="form-control"
-          type="text"
-          placeholder="task name"
-          value={this.state.taskName}
-          onChange={this.updateTaskName}
-        />
-        <button className="btn btn-default" type="button" onClick={this.onCreate}>
-          Create
-        </button>
-      </form>
-    )
   }
 
   renderTitle() {
@@ -112,8 +88,8 @@ class Column extends Component {
           { this.renderTitle() }
         </div>
         <div className="card-body">
-          { this.renderForm() }
-          <div className="my-3 row">
+          <div className="row">
+            <a onClick={this.onCreate} href="#">...add task</a>
             { this.renderTasks() }
           </div>
         </div>
