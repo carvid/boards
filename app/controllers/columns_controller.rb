@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ColumnsController < ApiController
-  before_action :find_board
+  before_action :find_board, only: [:create]
 
   def create
     @column = @board.columns.create!(column_params)
@@ -11,6 +11,18 @@ class ColumnsController < ApiController
   def show
     @column = Column.find(params[:id])
     json_response(@column)
+  end
+
+  def update
+    @column = Column.find(params[:id])
+    @column.update!(column_params)
+    json_response(@column, :accepted)
+  end
+
+  def destroy
+    @column = Column.find(params[:id])
+    @column.destroy!
+    json_response(nil, :no_content)
   end
 
   private

@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   get '/app/', to: redirect('/app/my-boards')
   get '/app/*other', to: 'workspace#index'
 
-  resources :boards, only: [:index, :create, :show, :update, :destroy] do
+  resources :boards, except: [:edit, :new] do
     resources :columns, only: :create
   end
 
+  resources :columns, only: [:update, :destroy]
   resources :columns, only: [] do
     resources :tasks, only: :create
   end
