@@ -105,5 +105,51 @@ describe 'Boards endpoints', type: :request do
       end
     end
   end
+
+  describe 'PATCH /boards/:id' do
+    before { patch "/boards/#{board_id}", params: request_body }
+
+    let(:request_body) { { title: 'Board Updated' } }
+
+    context 'when the record does not exist' do
+      let(:board_id) { -1 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+    end
+
+    context 'when the board record exists' do
+      it 'update the board' do
+        expect(json).to match(board_schema)
+      end
+
+      it 'returns status code 202' do
+        expect(response).to have_http_status(202)
+      end
+    end
+  end
+
+  describe 'DELETE /boards/:id' do
+    before { delete "/boards/#{board_id}" }
+
+    context 'when the record does not exist' do
+      let(:board_id) { -1 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+    end
+
+    context 'when the board record exists' do
+      it 'return no content' do
+        expect(response.body).to eq('')
+      end
+
+      it 'returns status code 204' do
+        expect(response).to have_http_status(204)
+      end
+    end
+  end
 end
 

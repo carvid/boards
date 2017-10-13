@@ -18,6 +18,18 @@ class BoardsController < ApiController
     json_response(@board)
   end
 
+  def update
+    @board = Board.find(params[:id])
+    @board.update!(board_params)
+    json_response(@board, :accepted)
+  end
+
+  def destroy
+    @board = Board.find(params[:id])
+    @board.destroy!
+    json_response(nil, :no_content)
+  end
+
   private
 
   def board_params
