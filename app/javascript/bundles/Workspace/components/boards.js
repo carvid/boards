@@ -28,9 +28,7 @@ export default class Workspace extends React.Component {
     if (this.shouldRedirect) return this.redirect();
 
     return (
-      <div className="container">
-        <BoardSelector onBoardSelect={this.onBoardSelect} />
-      </div>
+      <BoardSelector onBoardSelect={this.onBoardSelect} />
     );
   }
 }

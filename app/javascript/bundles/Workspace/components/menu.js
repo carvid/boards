@@ -19,7 +19,7 @@ export default class Menu extends React.Component {
     if (this.redirectTo) return this.redirect();
 
     return (
-      <ul className="nav nav-tabs nav-justified">
+      <ul className="nav nav-tabs nav-justified menu p-3">
         <li><a href="/app/my-boards">Boards</a></li>
       </ul>
     );

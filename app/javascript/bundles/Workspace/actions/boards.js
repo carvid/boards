@@ -20,6 +20,16 @@ export const fetchBoards = () => {
   }
 };
 
+export const updateBoard = (boardId, data) => {
+  if (!data.position) {
+    data.position = 1;
+  }
+  return (dispatch) => {
+    return api.patch(`/boards/${boardId}`, data)
+      .then(res => dispatch({ type: FETCH_BOARD, payload: res.data }));
+  }
+}
+
 export const setCurrentBoard = (board) => ({
   type: SET_CURRENT_BOARD, payload: { board }
 });

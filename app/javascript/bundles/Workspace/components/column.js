@@ -5,23 +5,41 @@ class Column extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { name: '' };
+    this.state = {
+      columnTitle: this.props.title,
+      editing: false,
+    };
 
     this.renderTasks = this.renderTasks.bind(this);
     this.renderTask = this.renderTask.bind(this);
-    this.updateName = this.updateName.bind(this);
+    this.updateColumnTitle = this.updateColumnTitle.bind(this);
     this.onCreate = this.onCreate.bind(this);
+    this.onUpdateTitle = this.onUpdateTitle.bind(this);
+    this.onEdit = this.onEdit.bind(this);
   }
 
-  onCreate() {
-    if (this.state.name.length) {
-      this.props.onCreate(this.state.name, this.props.id)
-      this.setState({ name: '', id: this.props.id });
+  get editing() { return this.state.editing; }
+
+  onEdit(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    this.setState({ editing: true });
+  }
+
+  onCreate(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    this.props.onCreate('double click to edit', this.props.id)
+  }
+
+  onUpdateTitle() {
+    if (this.state.columnTitle.length) {
+      this.setState({ editing: false });
     }
   }
 
-  updateName(ev) {
-    this.setState({ name: ev.target.value, id: this.props.id });
+  updateColumnTitle(ev) {
+    this.setState({ columnTitle: ev.target.value });
   }
 
   renderTasks() {
@@ -40,18 +58,24 @@ class Column extends Component {
     );
   }
 
-  renderForm() {
+  renderTitle() {
+    if (this.editing) return this.renderTitleForm();
+    return (
+      <h4 onDoubleClick={this.onEdit}>{ this.props.title }</h4>
+    );
+  }
+
+  renderTitleForm() {
     return (
       <form className="form-inline" role="form">
         <input
           className="form-control"
           type="text"
-          placeholder="task name"
-          value={this.state.name}
-          onChange={this.updateName}
+          value={this.state.columnTitle}
+          onChange={this.updateColumnTitle}
         />
-        <button className="btn btn-default" type="button" onClick={this.onCreate}>
-          Create
+        <button className="btn btn-default" type="button" onClick={this.onUpdateTitle}>
+          Save
         </button>
       </form>
     )
@@ -61,11 +85,11 @@ class Column extends Component {
     return (
       <div className="card">
         <div className="card-header">
-          <h4>{ this.props.title }</h4>
+          { this.renderTitle() }
         </div>
         <div className="card-body">
-          { this.renderForm() }
-          <div className="my-3 row">
+          <div className="row">
+            <a onClick={this.onCreate} href="#">...add task</a>
             { this.renderTasks() }
           </div>
         </div>

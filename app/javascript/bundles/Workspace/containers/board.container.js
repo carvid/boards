@@ -3,17 +3,25 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduce, includes } from 'lodash';
 import Board from '../components/board';
-import { createColumn } from '../actions';
+import {
+  createColumn,
+  updateBoard,
+} from '../actions';
 
 class BoardContainer extends Component {
   constructor(props) {
     super(props);
 
     this.onCreate = this.onCreate.bind(this);
+    this.onEdit = this.onEdit.bind(this);
   }
 
   onCreate(id, title) {
     this.props.actions.createColumn(id, title);
+  }
+
+  onEdit(id, title) {
+    this.props.actions.updateBoard(id, { title });
   }
 
   render() {
@@ -24,6 +32,7 @@ class BoardContainer extends Component {
         columns={columns}
         title={title}
         onAddColumn={this.onCreate}
+        onEdit={this.onEdit}
       />
     );
   }
@@ -71,6 +80,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       createColumn,
+      updateBoard,
     }, dispatch),
   };
 };
