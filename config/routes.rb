@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   resources :columns, only: [] do
     resources :tasks, only: :create
   end
+
+  resources :tasks, only: [:update, :destroy]
 end
 
