@@ -85,9 +85,7 @@ class Column extends Component {
   renderTitle() {
     if (this.editing) return this.renderTitleForm();
     return (
-      <div className="card-header">
-        <h4 onDoubleClick={this.onEdit}>{ this.props.title }</h4>
-      </div>
+      <h4 onDoubleClick={this.onEdit}>{ this.props.title }</h4>
     );
   }
 
@@ -110,7 +108,9 @@ class Column extends Component {
   render() {
     return (
       <div className="card">
-        {this.renderTitle()}
+        <div className="card-header">
+          { this.renderTitle() }
+        </div>
         <div className="card-body">
           { this.renderForm() }
           <div className="my-3 row">

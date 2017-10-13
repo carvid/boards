@@ -67,7 +67,7 @@ class BoardSelector extends Component {
 
   render() {
     return (
-      <div className="boards">
+      <div className="board-selector">
         <h3>Select your active board</h3>
 
         { this.renderForm() }
