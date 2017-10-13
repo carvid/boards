@@ -70,42 +70,6 @@ describe 'Boards endpoints', type: :request do
     end
   end
 
-  describe 'POST /boards/:id/columns' do
-    before { post "/boards/#{board_id}/columns", params: request_body }
-
-    let(:request_body) { {} }
-
-    context 'when the record does not exist' do
-      let(:board_id) { -1 }
-
-      it 'returns status code 404' do
-        expect(response).to have_http_status(404)
-      end
-    end
-
-    context 'when the board record exists' do
-      context 'when the request is valid' do
-        let(:request_body) { { title: 'Column 1', position: 1 } }
-
-        it 'creates a columns' do
-          expect(json).to match(column_schema)
-        end
-
-        it 'returns status code 201' do
-          expect(response).to have_http_status(201)
-        end
-      end
-
-      context 'when the request is invalid' do
-        let(:request_body) { { title: 'Column 1' } }
-
-        it 'returns status code 422' do
-          expect(response).to have_http_status(422)
-        end
-      end
-    end
-  end
-
   describe 'PATCH /boards/:id' do
     before { patch "/boards/#{board_id}", params: request_body }
 
@@ -148,6 +112,42 @@ describe 'Boards endpoints', type: :request do
 
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
+      end
+    end
+  end
+
+  describe 'POST /boards/:id/columns' do
+    before { post "/boards/#{board_id}/columns", params: request_body }
+
+    let(:request_body) { {} }
+
+    context 'when the record does not exist' do
+      let(:board_id) { -1 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+    end
+
+    context 'when the board record exists' do
+      context 'when the request is valid' do
+        let(:request_body) { { title: 'Column 1', position: 1 } }
+
+        it 'creates a columns' do
+          expect(json).to match(column_schema)
+        end
+
+        it 'returns status code 201' do
+          expect(response).to have_http_status(201)
+        end
+      end
+
+      context 'when the request is invalid' do
+        let(:request_body) { { title: 'Column 1' } }
+
+        it 'returns status code 422' do
+          expect(response).to have_http_status(422)
+        end
       end
     end
   end
