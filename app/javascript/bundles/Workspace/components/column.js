@@ -16,6 +16,7 @@ class Column extends Component {
     this.onCreate = this.onCreate.bind(this);
     this.onUpdateTitle = this.onUpdateTitle.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.stopEditing = this.stopEditing.bind(this);
   }
 
   get editing() { return this.state.editing; }
@@ -41,6 +42,10 @@ class Column extends Component {
         this.props.onEdit(this.state.columnTitle)
       }
     }
+  }
+
+  stopEditing() {
+    this.setState({ editing: false });
   }
 
   updateColumnTitle(ev) {
