@@ -33,30 +33,31 @@ class BoardSelector extends Component {
 
   renderBoard(board) {
     return (
-      <div className="board-button col" key={`board-${board.id}`}>
-        <button
-          className="btn btn-primary btn-sm"
+      <div className="board-item col-3 my-2" key={`board-${board.id}`}>
+        <div className="board-button rounded btn-primary"
           onClick={() => this.onBoardSelect(board)}
         >
-        {board.title}
-        </button>
+          <span className="title">{board.title}</span>
+        </div>
       </div>
     );
   }
 
   renderForm() {
     return (
-      <div className="card my-2">
-        <div className="card-body">
+      <div className="board-item col-3 my-2">
+        <div className="new-board rounded text-center">
+          <span className="title">Create new board</span>
           <form className="form-inline" role="form">
             <input
-              className="form-control"
+              className="form-control form-control-sm"
               type="text"
-              placeholder="board name"
+              placeholder="Board name"
               value={this.state.name}
               onChange={this.updateName}
             />
-            <button className="btn btn-default" type="button" onClick={this.onCreate}>
+            <br/>
+            <button className="btn btn-sm" type="button" onClick={this.onCreate}>
               Create
             </button>
           </form>
@@ -70,10 +71,10 @@ class BoardSelector extends Component {
       <div className="board-selector">
         <h3>Select your active board</h3>
 
-        { this.renderForm() }
-
         <div className="my-2 row">
           { this.renderBoards() }
+
+          { this.renderForm() }
         </div>
       </div>
     )
