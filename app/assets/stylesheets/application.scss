@@ -63,10 +63,29 @@ body {
     display: inline-block;
     margin: 5px;
   }
+  input, button {
+    margin: 5px;
+  }
 }
 
-.new-board {
+.board-col {
+  form {
     input, button {
+      margin: 2px 0px;
+    }
+  }
+}
+
+.new-column {
+  background: $light-gray;
+
+  h5.title {
+    display: inline-block;
     margin: 5px;
+  }
+  form {
+    input, button {
+      margin: 2px 0px;
+    }
   }
 }

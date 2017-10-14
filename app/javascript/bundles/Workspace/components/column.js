@@ -67,14 +67,14 @@ class Column extends Component {
 
   renderTitleForm() {
     return (
-      <form className="form-inline" role="form">
+      <form role="form">
         <input
-          className="form-control"
+          className="form-control form-control-sm"
           type="text"
           value={this.state.columnTitle}
           onChange={this.updateColumnTitle}
         />
-        <button className="btn btn-default" type="button" onClick={this.onUpdateTitle}>
+        <button className="btn btn-sm btn-default" type="button" onClick={this.onUpdateTitle}>
           Save
         </button>
       </form>
