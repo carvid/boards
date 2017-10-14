@@ -52,6 +52,7 @@ class Column extends Component {
     return (
       <Task
         key={`task-${task.id}`}
+        columnId={this.props.id}
         {...task}
       />
     );

@@ -3,16 +3,21 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduce } from 'lodash';
 import Task from '../components/task';
-import { fetchTask, updateTask } from '../actions';
+import { fetchTask, updateTask, removeTask } from '../actions';
 
 class TaskContainer extends React.Component {
   constructor(props) {
     super(props);
     this.onUpdate = this.onUpdate.bind(this);
+    this.onRemove = this.onRemove.bind(this);
   }
 
   onUpdate(title) {
-    this.props.actions.updateTask(this.props.columnId, this.props.id, { title });
+    this.props.actions.updateTask(this.props.id, { title });
+  }
+
+  onRemove(id) {
+    this.props.actions.removeTask(this.props.id, this.props.columnId);
   }
 
   render() {
@@ -20,6 +25,7 @@ class TaskContainer extends React.Component {
       <Task
         {...this.props}
         onUpdate={this.onUpdate}
+        onRemove={this.onRemove}
       />
     );
   }
@@ -35,6 +41,7 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators({
       fetchTask,
       updateTask,
+      removeTask,
     }, dispatch),
   };
 };

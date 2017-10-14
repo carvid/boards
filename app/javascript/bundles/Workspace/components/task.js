@@ -11,6 +11,7 @@ class Task extends Component {
     this.updateTitle = this.updateTitle.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.onRemove = this.onRemove.bind(this);
   }
 
   get editing() { return this.state.editing; }
@@ -28,6 +29,12 @@ class Task extends Component {
       this.setState({ editing: false });
       return this.props.onUpdate(this.state.title);
     }
+  }
+
+  onRemove(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    return this.props.onRemove(this.props.id);
   }
 
   renderForm() {
@@ -54,6 +61,11 @@ class Task extends Component {
   render() {
     return (
       <div className="task card col-12 my-2" key={`task-${this.props.id}`}>
+        <div className="row justify-content-end">
+          <div className="col-1">
+            <a href="#" onClick={this.onRemove}>x</a>
+          </div>
+        </div>
         { this.renderTitle() }
       </div>
     )

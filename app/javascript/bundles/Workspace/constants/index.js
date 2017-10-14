@@ -9,4 +9,5 @@ export const FETCH_BOARDS = 'FETCH_BOARDS';
 export const FETCH_COLUMN = 'FETCH_COLUMN';
 export const FETCH_TASK = 'FETCH_TASK';
 export const UPDATE_TASK = 'UPDATE_TASK';
+export const REMOVE_TASK = 'REMOVE_TASK';
 export const UPDATE_BAORD = 'UPDATE_BAORD';

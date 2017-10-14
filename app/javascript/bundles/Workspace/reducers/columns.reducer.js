@@ -4,6 +4,7 @@ import {
   FETCH_COLUMN,
   FETCH_BOARDS,
   FETCH_TASK,
+  REMOVE_TASK,
 } from '../constants';
 
 import { normalizeColumn, normalizeBoards } from './schemas';
@@ -37,6 +38,14 @@ const attachTaskToColumn = (state, action) => {
   };
 };
 
+const removeTaskFromColumn = (state, action) => {
+  const { payload } = action;
+  const column = state[payload.columnId];
+  return {
+    ...state,
+    [column.id]: { ...column, tasks: column.tasks.filter(id => id !== payload.id) },
+  };
+};
 
 const columnsById = (state = {}, action) => {
   switch (action.type) {
@@ -46,6 +55,8 @@ const columnsById = (state = {}, action) => {
       return addColumn(state, action);
     case FETCH_TASK:
       return attachTaskToColumn(state, action);
+    case REMOVE_TASK:
+      return removeTaskFromColumn(state, action);
     default:
       return state;
   }

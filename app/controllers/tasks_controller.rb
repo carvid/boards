@@ -16,6 +16,7 @@ class TasksController < ApiController
 
   def destroy
     @task = Task.find(params[:id])
+    @task.destroy!
     json_response(nil, :no_content)
   end
 
