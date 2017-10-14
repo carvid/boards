@@ -37,3 +37,36 @@ body {
 .menu {
   background: $cloudy-blue;
 }
+
+.board-button {
+  background: $light-blue;
+  height: 96px;
+  cursor: pointer;
+}
+
+.new-board {
+  background: $light-gray;
+  height: 96px;
+}
+
+.board-button {
+  span.title {
+    font-size: 1.5em;
+    display: inline-block;
+    margin: 10px;
+  }
+}
+
+.new-board {
+  span.title {
+    font-size: 0.9em;
+    display: inline-block;
+    margin: 5px;
+  }
+}
+
+.new-board {
+    input, button {
+    margin: 5px;
+  }
+}
