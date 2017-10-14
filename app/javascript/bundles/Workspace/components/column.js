@@ -32,10 +32,14 @@ class Column extends Component {
     this.props.onCreate('double click to edit', this.props.id)
   }
 
-  onUpdateTitle() {
-    if (this.state.columnTitle.length) {
-      this.setState({ editing: false });
-      this.props.onEdit(this.state.columnTitle)
+  onUpdateTitle(ev) {
+    if (ev.key === 'Enter') {
+      ev.preventDefault();
+      ev.stopPropagation();
+      if (this.state.columnTitle.length) {
+        this.setState({ editing: false });
+        this.props.onEdit(this.state.columnTitle)
+      }
     }
   }
 
@@ -73,10 +77,9 @@ class Column extends Component {
           type="text"
           value={this.state.columnTitle}
           onChange={this.updateColumnTitle}
+          onKeyDown={this.onUpdateTitle}
+          onBlur={this.stopEditing}
         />
-        <button className="btn btn-sm btn-default" type="button" onClick={this.onUpdateTitle}>
-          Save
-        </button>
       </form>
     )
   }
