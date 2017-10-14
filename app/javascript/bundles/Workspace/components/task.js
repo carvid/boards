@@ -11,6 +11,7 @@ class Task extends Component {
     this.updateTitle = this.updateTitle.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.stopEditing = this.stopEditing.bind(this);
     this.onRemove = this.onRemove.bind(this);
   }
 
@@ -24,10 +25,18 @@ class Task extends Component {
     this.setState({ editing: true });
   }
 
-  onUpdate() {
-    if (this.state.title.length) {
-      this.setState({ editing: false });
-      return this.props.onUpdate(this.state.title);
+  stopEditing() {
+    this.setState({ editing: false });
+  }
+
+  onUpdate(ev) {
+    if (ev.key === 'Enter') {
+      ev.preventDefault();
+      ev.stopPropagation();
+      if (this.state.title.length) {
+        this.setState({ editing: false });
+        return this.props.onUpdate(this.state.title);
+      }
     }
   }
 
@@ -45,10 +54,9 @@ class Task extends Component {
           type="text"
           value={this.state.title}
           onChange={this.updateTitle}
+          onKeyDown={this.onUpdate}
+          onBlur={this.stopEditing}
         />
-        <button className="btn btn-default" type="button" onClick={this.onUpdate}>
-          Save
-        </button>
       </form>
     )
   }

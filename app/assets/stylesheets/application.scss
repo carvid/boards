@@ -83,9 +83,21 @@ body {
     display: inline-block;
     margin: 5px;
   }
+
   form {
     input, button {
       margin: 2px 0px;
+    }
+  }
+}
+
+.task,
+.board-column {
+  .form-inline {
+    input {
+      width: 90%;
+      padding: 3px;
+      font-size: 13px;
     }
   }
 }
