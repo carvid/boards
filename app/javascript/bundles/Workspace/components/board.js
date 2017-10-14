@@ -72,7 +72,7 @@ class Board extends Component {
               disabled={!this.canAddMoreColumns}
             />
             <button
-              className="btn btn-sm btn-default"
+              className="btn btn-sm btn-primary"
               type="button"
               onClick={this.onCreate}
               disabled={!this.canAddMoreColumns}

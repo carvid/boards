@@ -57,7 +57,7 @@ class BoardSelector extends Component {
               onChange={this.updateName}
             />
             <br/>
-            <button className="btn btn-sm" type="button" onClick={this.onCreate}>
+            <button className="btn btn-sm btn-primary" type="button" onClick={this.onCreate}>
               Create
             </button>
           </form>

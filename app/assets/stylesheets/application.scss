@@ -45,7 +45,7 @@ body {
 }
 
 .new-board {
-  background: $light-gray;
+  background: $white;
   height: 96px;
 }
 
@@ -77,7 +77,7 @@ body {
 }
 
 .new-column {
-  background: $light-gray;
+  background: $white;
 
   h5.title {
     display: inline-block;
@@ -88,6 +88,10 @@ body {
     input, button {
       margin: 2px 0px;
     }
+  }
+
+  button {
+    width: 100%;
   }
 }
 
@@ -104,7 +108,9 @@ body {
 
 .board-column {
   .card-header {
+    background: $light-blue;
     h4 {
+      color: $white;
       font-size: 14px;
       max-width: 90%;
       overflow: hidden;
