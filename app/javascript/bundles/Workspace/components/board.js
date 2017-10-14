@@ -25,6 +25,7 @@ class Board extends Component {
 
   onCreate() {
     this.props.onAddColumn(this.props.id, this.state.name);
+    this.setState({ name: '' });
   }
 
   onEdit() {
@@ -59,7 +60,7 @@ class Board extends Component {
   renderForm() {
     return (
       <div className="col-2">
-        <div className="new-column rounded">
+        <div className="new-column rounded text-center">
           <h5 className="title">Add column</h5>
           <form role="form" className="p-2">
             <input
