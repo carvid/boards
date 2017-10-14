@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Task from './task';
+import Task from '../containers/task.container';
 
 class Column extends Component {
   constructor(props) {
@@ -52,9 +52,7 @@ class Column extends Component {
     return (
       <Task
         key={`task-${task.id}`}
-        id={task.id}
-        title={task.title}
-        position={task.position}
+        {...task}
       />
     );
   }
@@ -84,7 +82,7 @@ class Column extends Component {
 
   render() {
     return (
-      <div className="card">
+      <div className="board-column card">
         <div className="card-header">
           { this.renderTitle() }
         </div>

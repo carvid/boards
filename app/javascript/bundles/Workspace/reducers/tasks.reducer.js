@@ -7,6 +7,7 @@ import {
 import {
   FETCH_BOARDS,
   FETCH_TASK,
+  UPDATE_TASK,
 } from '../constants';
 
 const addTask = (state, action) => {
@@ -32,6 +33,7 @@ const tasksById = (state = {}, action) => {
     case FETCH_BOARDS:
       return addTasks(state, action);
     case FETCH_TASK:
+    case UPDATE_TASK:
       return addTask(state, action);
     default:
       return state;

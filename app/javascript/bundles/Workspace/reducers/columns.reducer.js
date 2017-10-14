@@ -31,7 +31,6 @@ const addColumns = (state, action) => {
 const attachTaskToColumn = (state, action) => {
   const { payload } = action;
   const column = state[payload.columnId];
-
   return {
     ...state,
     [column.id]: { ...column, tasks: [ ...column.tasks, payload.id ] },

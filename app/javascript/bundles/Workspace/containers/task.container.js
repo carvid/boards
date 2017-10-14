@@ -1,23 +1,42 @@
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduce } from 'lodash';
 import Task from '../components/task';
-import { onBoardSelect, fetchTask } from '../actions';
+import { fetchTask, updateTask } from '../actions';
 
-const mapStateToProps = (state) => {
-  const task = state.columns.byId[task_id]
-  return {
-    task,
+class TaskContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onUpdate = this.onUpdate.bind(this);
   }
+
+  onUpdate(title) {
+    this.props.actions.updateTask(this.props.columnId, this.props.id, { title });
+  }
+
+  render() {
+    return (
+      <Task
+        {...this.props}
+        onUpdate={this.onUpdate}
+      />
+    );
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return ownProps;
 };
 
 const mapDispatchToProps = (dispatch) => {
 
   return {
     actions: bindActionCreators({
-      fetchTask
+      fetchTask,
+      updateTask,
     }, dispatch),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Task);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskContainer);
