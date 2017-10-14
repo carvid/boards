@@ -6,6 +6,8 @@ import Board from '../components/board';
 import {
   createColumn,
   updateBoard,
+  fetchBoards,
+  setCurrentBoard,
 } from '../actions';
 
 class BoardContainer extends Component {
@@ -14,6 +16,13 @@ class BoardContainer extends Component {
 
     this.onCreate = this.onCreate.bind(this);
     this.onEdit = this.onEdit.bind(this);
+  }
+
+  componentWillMount() {
+    if (!this.props.id) {
+      this.props.actions.fetchBoards()
+        .then(() => this.props.actions.setCurrentBoard({ id: this.props.match.params.id }));
+    }
   }
 
   onCreate(id, title) {
@@ -41,7 +50,7 @@ class BoardContainer extends Component {
 const mapStateToProps = (state) => {
   const board = { ...state.boards.byId[state.boards.current] };
 
-  if (!board) return { id: '', title: '', columns: [] };
+  if (!board) return {};
 
   return {
     ...hydrateBoard(state, board),
@@ -81,6 +90,8 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators({
       createColumn,
       updateBoard,
+      fetchBoards,
+      setCurrentBoard,
     }, dispatch),
   };
 };

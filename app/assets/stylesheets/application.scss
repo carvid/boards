@@ -101,3 +101,15 @@ body {
     }
   }
 }
+
+.board-column {
+  .card-header {
+    h4 {
+      font-size: 14px;
+      max-width: 90%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
