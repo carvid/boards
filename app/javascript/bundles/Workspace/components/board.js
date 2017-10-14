@@ -58,24 +58,29 @@ class Board extends Component {
 
   renderForm() {
     return (
-      <form className="form-inline" role="form">
-        <input
-          className="form-control"
-          type="text"
-          placeholder="column name"
-          value={this.state.name}
-          onChange={this.updateName}
-          disabled={!this.canAddMoreColumns}
-        />
-        <button
-          className="btn btn-default"
-          type="button"
-          onClick={this.onCreate}
-          disabled={!this.canAddMoreColumns}
-        >
-          Add Column
-        </button>
-      </form>
+      <div className="col-2">
+        <div className="new-column rounded">
+          <h5 className="title">Add column</h5>
+          <form role="form" className="p-2">
+            <input
+              className="form-control form-control-sm"
+              type="text"
+              placeholder="Column name"
+              value={this.state.name}
+              onChange={this.updateName}
+              disabled={!this.canAddMoreColumns}
+            />
+            <button
+              className="btn btn-sm btn-default"
+              type="button"
+              onClick={this.onCreate}
+              disabled={!this.canAddMoreColumns}
+            >
+              Add Column
+            </button>
+          </form>
+        </div>
+      </div>
     );
   }
 
@@ -88,16 +93,18 @@ class Board extends Component {
 
   renderTitleForm() {
     return (
-      <form className="form-inline" role="form">
-        <input
-          className="form-control"
-          type="text"
-          value={this.state.boardTitle}
-          onChange={this.updateBoardTitle}
-        />
-        <button className="btn btn-default" type="button" onClick={this.onUpdate}>
-          Save
-        </button>
+      <form role="form">
+        <div className="input-group">
+          <input
+            className="form-control form-control-large"
+            type="text"
+            value={this.state.boardTitle}
+            onChange={this.updateBoardTitle}
+          />
+          <button className="input-group-addon" type="button" onClick={this.onUpdate}>
+            Save
+          </button>
+        </div>
       </form>
     )
   }
@@ -111,9 +118,9 @@ class Board extends Component {
           </div>
         </div>
         <div className="boards py-3">
-          { this.renderForm() }
-          <div className="row my-3">
+          <div className="row row-eq-height my-3">
             { this.renderColumns() }
+            { this.renderForm() }
           </div>
         </div>
       </div>
