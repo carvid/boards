@@ -11,7 +11,7 @@ class TasksController < ApiController
   def update
     @task = Task.find(params[:id])
     @task.update!(task_params)
-    json_response(@task, :accepted)
+    json_response(@task, :ok)
   end
 
   def destroy

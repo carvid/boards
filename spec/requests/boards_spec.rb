@@ -88,8 +88,8 @@ describe 'Boards endpoints', type: :request do
         expect(json).to match(board_schema)
       end
 
-      it 'returns status code 202' do
-        expect(response).to have_http_status(202)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
       end
     end
   end

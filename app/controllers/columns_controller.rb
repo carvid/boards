@@ -16,7 +16,7 @@ class ColumnsController < ApiController
   def update
     @column = Column.find(params[:id])
     @column.update!(column_params)
-    json_response(@column, :accepted)
+    json_response(@column, :ok)
   end
 
   def destroy
